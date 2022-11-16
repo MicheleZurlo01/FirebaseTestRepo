@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reklative"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#557723"
+    tools:context=".RegistrazioneActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:paddingStart="5dp">
+
+
+            <ImageView
+                android:id="@+id/Avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/avatar_circle"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_profile"
+                tools:srcCompat="@drawable/ic_profile" />
+
+            <Button
+                android:id="@+id/caricaFotoButton"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/Avatar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#8CAD45"
+                android:shadowColor="#8CAD45"
+                android:text="Carica foto"
+                app:cornerRadius="15dp" />
+
+            <EditText
+                android:id="@+id/editTextNome"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/caricaFotoButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round"
+                android:ems="10"
+                android:hint=" Nome"
+                android:inputType="text"
+                android:paddingStart="5dp"
+                android:textColor="@color/NaTourDarkestGreen"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/editTextCognome"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/editTextNome"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round"
+                android:ems="10"
+                android:hint=" Cognome"
+                android:inputType="text"
+                android:paddingStart="5dp"
+                android:textColor="@color/NaTourDarkestGreen"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupSesso"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/editTextCognome"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/NaTourLightCream"
+                    android:checked="true"
+                    android:text="Maschio"
+                    android:textColor="@color/NaTourLightCream"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonF"
+                    android:layout_width="102dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:buttonTint="@color/NaTourLightCream"
+                    android:text="Femmina"
+                    android:textColor="@color/NaTourLightCream"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonO"
+                    android:layout_width="102dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/NaTourLightCream"
+                    android:text="Altro"
+                    android:textColor="@color/NaTourLightCream"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_below="@+id/radioGroupSesso"
+                android:layout_alignEnd="@+id/radioGroupSesso"
+                android:layout_marginStart="190dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/round"
+                android:duplicateParentState="false"
+                android:editable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="gg/mm/aaaa"
+                android:paddingStart="5dp"
+                android:textColor="@color/NaTourDarkestGreen"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/textView2Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radioGroupSesso"
+                android:layout_alignStart="@+id/radioGroupSesso"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="210dp"
+                android:text="Data di nascita"
+                android:textColor="@color/NaTourLightCream"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editTextDate"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round"
+                android:ems="10"
+                android:hint=" E-mail"
+                android:inputType="textEmailAddress"
+                android:paddingStart="5dp"
+                android:textColor="@color/NaTourDarkestGreen"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+            <EditText
+                android:id="@+id/editTextUsername"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/editTextEmail"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round"
+                android:ems="10"
+                android:hint=" Username"
+                android:inputType="textEmailAddress"
+                android:paddingStart="5dp"
+                android:textColor="@color/NaTourDarkestGreen" />
+
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editTextUsername"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round"
+                android:ems="10"
+                android:hint=" Password"
+                android:inputType="textPassword"
+                android:paddingStart="5dp"
+                android:textColor="@color/NaTourDarkestGreen"
+                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/editTextPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#8CAD45"
+                android:text="Registrati"
+                android:textColor="@color/NaTourWhite"
+                app:cornerRadius="15dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

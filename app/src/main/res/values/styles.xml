@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Button" parent="TextAppearance.AppCompat.Button">
+        <item name="android:colorBackground">@color/NaTourLightGreen</item>
+        <item name="android:textColor">@color/NaTourWhite</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/NaTourLightGreen</item>
+        <item name="android:colorAccent">@color/NaTourWhite</item>
+        <item name="android:textColorPrimary">@color/NaTourWhite</item>
+    </style>
+
+    <style name="RatingBarPiccola" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">1</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+</resources>
