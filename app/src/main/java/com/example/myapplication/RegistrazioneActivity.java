@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
@@ -162,7 +163,7 @@ public class RegistrazioneActivity extends AppCompatActivity {
 
                             Utente utente = new Utente(nome,cognome,email,username,dataNascita,sesso,password);
 
-                            FirebaseDatabase.getInstance().getReference("users")
+                            FirebaseDatabase.getInstance("https://fir-proj-ae9c9-default-rtdb.europe-west1.firebasedatabase.app/").getReference("users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(utente).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override

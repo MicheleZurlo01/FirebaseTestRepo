@@ -104,7 +104,16 @@ public class Utente {
 
     @Override
     public String toString() {
-        return name + " " + cognome + "\nEmail: " + email;
+        return "Utente{" +
+                "name='" + name + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", dataNascita='" + dataNascita + '\'' +
+                ", sesso='" + sesso + '\'' +
+                ", password='" + password + '\'' +
+                ", id=" + id +
+                '}';
     }
 
     @Override

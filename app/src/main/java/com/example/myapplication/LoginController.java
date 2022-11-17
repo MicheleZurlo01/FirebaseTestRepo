@@ -12,12 +12,17 @@ public class LoginController {
 
     private UtenteDAO utenteDAO;
     private LoginActivity activity;
+    private MainActivity mainActivity;
 
 
     public LoginController(LoginActivity loginActivity) {
         this.activity = loginActivity;
 
         utenteDAO = new UtenteDAOAmplify(activity);
+    }
+
+    public LoginController(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
     }
 
     public void apriRegistrazioneAccount(){
@@ -43,6 +48,12 @@ public class LoginController {
     public void apriMainActivity() {
         Intent intent = new Intent(activity.getApplicationContext(), MainActivity.class);
         activity.startActivity(intent);
+        Log.i(this.getClass().toString(), "Login Account: ");
+    }
+
+    public void apriLoginActivity() {
+        Intent intent = new Intent(mainActivity.getApplicationContext(), LoginActivity.class);
+        mainActivity.startActivity(intent);
         Log.i(this.getClass().toString(), "Login Account: ");
     }
 }
