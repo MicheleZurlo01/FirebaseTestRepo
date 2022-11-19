@@ -173,6 +173,8 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                            System.out.println("Google user:    "+user.getEmail() + user.getPhoneNumber() + user.getPhotoUrl() + user.getDisplayName());
                             //updateUI(user);
 
 
