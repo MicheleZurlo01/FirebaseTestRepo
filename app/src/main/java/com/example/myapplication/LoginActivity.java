@@ -18,6 +18,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
@@ -35,9 +41,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -48,14 +57,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button registraAccountButton;
     private Button accediButton;
-    //private Button accediFacebookButton;
+    private LoginButton accediFacebookButton;
     private Button accediGoogleButton;
 
     private EditText emailEditText, passwordEditText;
 
     private String email, password;
     //private LoginButton accediFacebookButton;
-    //private CallbackManager callbackManager;
+    private CallbackManager callbackManager;
 
     private FirebaseAuth firebaseAuth;
 
@@ -84,6 +93,12 @@ public class LoginActivity extends AppCompatActivity {
             controller.apriMainActivity();
         }
 
+
+
+            FacebookSdk.sdkInitialize(getApplicationContext());
+            //AppEventsLogger.activateApp(this);
+
+
     }
 
 
@@ -91,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-       //Works for Google Login
+       //Works for Google Login and FB Login
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser != null){
@@ -104,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
     private void ottieniRiferimenti(){
         registraAccountButton = findViewById(R.id.registraAccountButton);
         accediButton = findViewById(R.id.buttonAccedi);
-        //accediFacebookButton = findViewById(R.id.Login_Facebook_Button);
+        accediFacebookButton = findViewById(R.id.Login_Facebook_Button);
         accediGoogleButton = findViewById(R.id.Login_Google_Button);
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
         passwordEditText = findViewById(R.id.editTextTextPassword);
@@ -113,11 +128,75 @@ public class LoginActivity extends AppCompatActivity {
     private void configuraComponenti(){
         configuraAccediButton();
         configuraRegistraButton();
-        //configuraAccediFacebookButton();
+        configuraAccediFacebookButton();
 
 
         configuraAccediGoogleButton();
 
+    }
+
+    private void configuraAccediFacebookButton() {
+
+        callbackManager = CallbackManager.Factory.create();
+        accediFacebookButton.setReadPermissions("email","public_profile");
+        accediFacebookButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                    handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(@NonNull FacebookException e) {
+
+            }
+        });
+        /*
+        accediFacebookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+                accediConFacebook();
+                
+            }
+        });
+
+         */
+    }
+
+    private void handleFacebookAccessToken(AccessToken token) {
+        Log.d(TAG, "handleFacebookAccessToken:" + token);
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
+                            System.out.println("Facebook User: "+user.getDisplayName());
+                            controller.apriMainActivity();
+                           // updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                           // updateUI(null);
+                        }
+                    }
+                });
+    }
+
+    private void accediConFacebook() {
     }
 
     private void accediConOneTapClient() {
