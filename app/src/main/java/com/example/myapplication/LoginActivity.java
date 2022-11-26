@@ -182,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
 
 
-                            System.out.println("Facebook User: "+user.getDisplayName());
+                            System.out.println("Facebook User: "+user.getDisplayName() +user.getPhotoUrl() + user.getPhoneNumber() );
                             controller.apriMainActivity();
                            // updateUI(user);
                         } else {
@@ -246,7 +246,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void configuraAccediGoogleButton(){
 
-/*     OLD CODE FOR SIGN IN WITH GOOGLE
+//    OLD CODE FOR SIGN IN WITH GOOGLE
 
         //Configure Google Sign In
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -257,23 +257,23 @@ public class LoginActivity extends AppCompatActivity {
         //Build a sign in client with the google sign in option client
         mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
- */
+
 
         accediGoogleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                accediConOneTapClient();
+               // accediConOneTapClient();
 
                 //Old code for sign in with google
-               // signIn();
+                signIn();
 
             }
         });
     }
 
-    /*    OLD CODE FOR SIGN IN WITH GOOGLE
+    //   OLD CODE FOR SIGN IN WITH GOOGLE
     private void signIn(){
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -282,12 +282,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-    */
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        /*    OLD CODE FOR SIGN IN WITH GOOGLE
+        //    OLD CODE FOR SIGN IN WITH GOOGLE
 
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent
@@ -305,9 +305,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
-         */
 
 
+
+/*
         switch (requestCode) {
             case REQ_ONE_TAP:
 
@@ -330,8 +331,19 @@ public class LoginActivity extends AppCompatActivity {
                                             Log.d(TAG, "signInWithCredential:success");
                                             FirebaseUser user = firebaseAuth.getCurrentUser();
 
+                                            GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(LoginActivity.this);
+                                            if (acct != null) {
+                                                String personName = acct.getDisplayName();
+                                                String personGivenName = acct.getGivenName();
+                                                String personFamilyName = acct.getFamilyName();
+                                                String personEmail = acct.getEmail();
+                                                String personId = acct.getId();
+
+                                               // Uri personPhoto = acct.getPhotoUrl();
+                                            }
+
                                             //Print of the user
-                                            System.out.println("Google login "+user.getDisplayName());
+                                            System.out.println("Google login "+user.getDisplayName() + user.getPhotoUrl());
 
                                             controller.apriMainActivity();
                                             //  updateUI(user);
@@ -364,10 +376,12 @@ public class LoginActivity extends AppCompatActivity {
                 break;
         }
 
+        */
+
 
     }
 
-    /*       OLD CODE FOR SIGN IN WITH GOOGLE
+    //      OLD CODE FOR SIGN IN WITH GOOGLE
 
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
@@ -397,7 +411,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-     */
+
 
     private void configuraRegistraButton(){
         registraAccountButton.setOnClickListener(new View.OnClickListener() {

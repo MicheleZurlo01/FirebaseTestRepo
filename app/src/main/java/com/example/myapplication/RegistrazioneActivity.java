@@ -93,10 +93,10 @@ public class RegistrazioneActivity extends AppCompatActivity {
             Uri fotoUri = data.getData();
             fotoAvatar.setImageURI(fotoUri);
 
-            String accessKey = "AKIAUP5XLUCD5FM6NUOG";
-            String secretKey="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";
-            String bucketName = "natour215fa910556a6e48489a03b78a2759a592152000-dev";
-            String keyName = "NaTourFile.jpg";
+            //String accessKey = "AKIAUP5XLUCD5FM6NUOG";
+            //String secretKey="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";
+            //String bucketName = "natour215fa910556a6e48489a03b78a2759a592152000-dev";
+           // String keyName = "NaTourFile.jpg";
 
 
         }
@@ -178,7 +178,6 @@ public class RegistrazioneActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
     private void configuraCaricaFotoButton(){
         caricaFotoButton.setOnClickListener(new View.OnClickListener() {

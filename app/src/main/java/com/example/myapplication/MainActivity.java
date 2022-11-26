@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 }else
                 {
                     //login with google
-                    System.out.println("Login google info:" + currentUser.getDisplayName()+ currentUser.getPhotoUrl());
+                    System.out.println("Login info:" + currentUser.getDisplayName()+ currentUser.getPhotoUrl());
 
                 }
             }
